@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DropDownMenu">
+
+        <attr name="dropMenuDistanceOfTabAndImage" format="dimension"/>
+        <attr name="dropMenuUnderlineColor" format="color"/>
+        <attr name="dropMenuDividerColor" format="color"/>
+        <attr name="dropMenuTextSelectedColor" format="color"/>
+        <attr name="dropMenuTextUnselectedColor" format="color"/>
+        <attr name="dropMenuBackgroundColor" format="color"/>
+        <attr name="dropMenuMaskColor" format="color"/>
+        <attr name="dropMenuTextSize" format="dimension"/>
+        <attr name="dropMenuSelectedIcon" format="reference"/>
+        <attr name="dropMenuUnselectedIcon" format="reference"/>
+        <attr name="dropMenuMenuHeightPercent" format="float"/>
+        <attr name="dropMenuMenuParentHeight" format="dimension"/>
+        <attr name="dropMenuUnderLineHeight" format="dimension"/>
+    </declare-styleable>
+
+</resources>

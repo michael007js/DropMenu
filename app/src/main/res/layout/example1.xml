@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sss.simpleDropMenu.SimpleDropMenu
+        android:id="@+id/dropDownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dropMenuBackgroundColor="@color/white"
+        app:dropMenuDistanceOfTabAndImage="5dp"
+        app:dropMenuDividerColor="#333333"
+        app:dropMenuMaskColor="#cc333333"
+        app:dropMenuMenuHeightPercent="0.5"
+        app:dropMenuMenuParentHeight="40dp"
+        app:dropMenuSelectedIcon="@mipmap/item_play_xia"
+        app:dropMenuTextSelectedColor="@color/app_red"
+        app:dropMenuTextSize="13sp"
+        app:dropMenuTextUnselectedColor="@color/text_666666"
+        app:dropMenuUnderLineHeight="1dp"
+        app:dropMenuUnderlineColor="@color/gray"
+        app:dropMenuUnselectedIcon="@mipmap/item_play_you" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:text="hello world" />
+</FrameLayout>
