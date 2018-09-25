@@ -6,10 +6,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sss.simpleDropMenu.SimpleDropMenu;
-import com.sss.simpleDropMenu.TabMenuBean;
+import com.sss.simpleDropMenu.bean.TabMenuBean;
 
 import java.util.ArrayList;
 import java.util.List;

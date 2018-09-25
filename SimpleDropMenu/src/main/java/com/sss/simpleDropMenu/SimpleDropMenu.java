@@ -7,7 +7,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -22,6 +21,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.sss.simpleDropMenu.bean.TabMenuBean;
 
 import java.util.List;
 
@@ -184,7 +185,7 @@ public class SimpleDropMenu extends LinearLayout {
      * @param popupViews
      * @param contentView
      */
-    public void setDropDownMenu(@NonNull List<TabMenuBean> tabTexts, @NonNull List<View> popupViews, @NonNull View contentView) {
+    public void setDropDownMenu( List<TabMenuBean> tabTexts,  List<View> popupViews, View contentView) {
         if (tabTexts.size() != popupViews.size()) {
             throw new IllegalArgumentException("params not match, tabTexts.size() should be equal popupViews.size()");
         }
@@ -237,7 +238,7 @@ public class SimpleDropMenu extends LinearLayout {
      * @param tabMenuBean
      * @param i
      */
-    private void addTab(@NonNull final TabMenuBean tabMenuBean, final int i) {
+    private void addTab(final TabMenuBean tabMenuBean, final int i) {
         //tab父容器（包含TextView和ImageView）
         LinearLayout tabParent = new LinearLayout(getContext());
         tabParent.setOrientation(HORIZONTAL);
