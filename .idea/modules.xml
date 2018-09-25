@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DropMenu.iml" filepath="$PROJECT_DIR$/DropMenu.iml" />
+      <module fileurl="file://D:\youzyapp\DropMenu\DropMenu.iml" filepath="D:\youzyapp\DropMenu\DropMenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/SimpleDropMenu/SimpleDropMenu.iml" filepath="$PROJECT_DIR$/SimpleDropMenu/SimpleDropMenu.iml" />
+      <module fileurl="file://D:\youzyapp\DropMenu\SimpleDropMenu\SimpleDropMenu.iml" filepath="D:\youzyapp\DropMenu\SimpleDropMenu\SimpleDropMenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\youzyapp\DropMenu\app\app.iml" filepath="D:\youzyapp\DropMenu\app\app.iml" />
     </modules>
   </component>
 </project>

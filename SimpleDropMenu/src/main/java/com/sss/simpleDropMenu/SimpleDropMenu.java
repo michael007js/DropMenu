@@ -10,7 +10,6 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.Gravity;
@@ -173,8 +172,7 @@ public class SimpleDropMenu extends LinearLayout {
 
         //初始化containerView并将其添加到DropDownMenu
         containerView = new FrameLayout(context);
-        containerView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-        containerView.setBackgroundColor(Color.TRANSPARENT);
+        containerView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
         addView(containerView, 2);
 
     }
@@ -262,9 +260,6 @@ public class SimpleDropMenu extends LinearLayout {
             public void onClick(View v) {
                 if (tabMenuBean.canDropDown) {
                     switchMenu(i);
-                    if (onDropDownMenuCallBack != null) {
-                        onDropDownMenuCallBack.onTabMenuStatusChanged(i, isMenuOpen());
-                    }
                 } else {
                     if (onDropDownMenuCallBack != null) {
                         onDropDownMenuCallBack.onTabClick(i, tabMenuBean.title);
@@ -433,6 +428,9 @@ public class SimpleDropMenu extends LinearLayout {
         });
         popupMenuViews.setAnimation(outAnimation);
         maskView.setAnimation(maskAnimation);
+        if (onDropDownMenuCallBack != null) {
+            onDropDownMenuCallBack.onTabMenuStatusChanged(current_tab_position, false);
+        }
         current_tab_position = -1;
         closePopmenuView();
     }
@@ -453,6 +451,9 @@ public class SimpleDropMenu extends LinearLayout {
         maskView.setVisibility(VISIBLE);
         maskView.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.mask_in));
         openPopmenuView(position);
+        if (onDropDownMenuCallBack != null) {
+            onDropDownMenuCallBack.onTabMenuStatusChanged(current_tab_position, true);
+        }
     }
 
 

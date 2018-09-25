@@ -18,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void example2(View view) {
-        startActivity(new Intent(this, Example1.class));
+        startActivity(new Intent(this, Example2.class));
     }
 }

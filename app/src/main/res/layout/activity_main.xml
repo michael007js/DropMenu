@@ -11,9 +11,13 @@
         android:onClick="example1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <Button
-        android:text="example2"
-        android:onClick="example2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:onClick="example2"
+        android:text="example2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>

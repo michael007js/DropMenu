@@ -7,7 +7,7 @@
     <com.sss.simpleDropMenu.SimpleDropMenu
         android:id="@+id/dropDownMenu"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:dropMenuBackgroundColor="@color/white"
         app:dropMenuDistanceOfTabAndImage="5dp"
         app:dropMenuDividerColor="#333333"
@@ -22,10 +22,4 @@
         app:dropMenuUnderlineColor="@color/gray"
         app:dropMenuUnselectedIcon="@mipmap/item_play_you" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="50sp"
-        android:text="hello world" />
 </FrameLayout>
