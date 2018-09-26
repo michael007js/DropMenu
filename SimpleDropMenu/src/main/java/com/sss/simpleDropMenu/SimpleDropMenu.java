@@ -356,6 +356,15 @@ public class SimpleDropMenu extends LinearLayout {
     }
 
     /**
+     * 重置tab文字颜色
+     */
+    public void resetMenuTabColor(){
+        for (int i = 0; i < tabMenuView.getChildCount(); i++) {
+            setMenuTabColor(i,textUnselectedColor);
+        }
+    }
+
+    /**
      * 改变tab文字
      *
      * @param text
