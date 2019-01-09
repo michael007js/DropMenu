@@ -164,8 +164,9 @@ public class SimpleDropMenu extends LinearLayout {
         underLineHeight = a.getDimensionPixelSize(R.styleable.DropDownMenu_dropMenuUnderLineHeight, underLineHeight);//下划线高度
         menuParentHeight = a.getDimensionPixelSize(R.styleable.DropDownMenu_dropMenuMenuParentHeight, menuParentHeight);//顶部菜单布局高度（包括下划线）
         distanceOfTabAndImage = a.getDimensionPixelSize(R.styleable.DropDownMenu_dropMenuDistanceOfTabAndImage, distanceOfTabAndImage);//tab与图片的距离(如果>-1将tab设置成match_parent并设置weight=1且正常设置margin,否则将tab设置成wrap_content)
-        tabGravity = a.getString(R.styleable.DropDownMenu_dropMenuTabGravity)==null?tabGravity: a.getString(R.styleable.DropDownMenu_dropMenuTabGravity);//顶部tab中一个个子tab的位置
-        tabChildGravity=a.getString(R.styleable.DropDownMenu_dropMenuTabChildGravity)==null?tabChildGravity: a.getString(R.styleable.DropDownMenu_dropMenuTabChildGravity);//顶部tab中一个个子tab中的内容位置
+        dropMenuTabIsWrapContent = a.getBoolean(R.styleable.DropDownMenu_dropMenuTabIsWrapContent, dropMenuTabIsWrapContent);//顶部tab中一个个tab是否需要WrapContent模式,如果是，自适应菜单按钮中文字或图标的宽度，如果不是，则顶部的一个个菜单按钮按权重=1排列
+        tabGravity = a.getString(R.styleable.DropDownMenu_dropMenuTabGravity)==null?tabGravity: a.getString(R.styleable.DropDownMenu_dropMenuTabGravity);//顶部tab中一个个tab的位置
+        tabChildGravity=a.getString(R.styleable.DropDownMenu_dropMenuTabChildGravity)==null?tabChildGravity: a.getString(R.styleable.DropDownMenu_dropMenuTabChildGravity);//顶部tab中一个个tab中子tab的位置
         a.recycle();
 
         //初始化tabMenuView并添加到tabMenuView
