@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="DropDownMenu">
-
+        <attr name="dropMenuTabGravity" format="string"/>
+        <attr name="dropMenuTabChildGravity" format="string"/>
         <attr name="dropMenuDistanceOfTabAndImage" format="dimension"/>
         <attr name="dropMenuUnderlineColor" format="color"/>
         <attr name="dropMenuDividerColor" format="color"/>
@@ -15,6 +16,7 @@
         <attr name="dropMenuMenuHeightPercent" format="float"/>
         <attr name="dropMenuMenuParentHeight" format="dimension"/>
         <attr name="dropMenuUnderLineHeight" format="dimension"/>
+        <attr name="dropMenuTabIsWrapContent" format="boolean"/>
     </declare-styleable>
 
 </resources>

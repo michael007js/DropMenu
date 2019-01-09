@@ -36,22 +36,26 @@ import java.util.List;
 /*
     XML:
       <com.sss.simpleDropMenu.SimpleDropMenu
-              android:id="@+id/dropDownMenu"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              app:dropMenuDistanceOfTabAndImage="5dp"
-              app:dropMenuDividerColor="#333333"
-              app:dropMenuMaskColor="#cc333333"
-              app:dropMenuBackgroundColor="@color/white"
-              app:dropMenuMenuHeightPercent="0.5"
-              app:dropMenuMenuParentHeight="40dp"
-              app:dropMenuSelectedIcon="@mipmap/item_play_xia"
-              app:dropMenuTextSize="13sp"
-              app:dropMenuUnderLineHeight="1dp"
-              app:dropMenuUnselectedIcon="@mipmap/item_play_you"
-              app:dropMenuTextSelectedColor="@color/app_red"
-              app:dropMenuTextUnselectedColor="@color/text_666666"
-              app:dropMenuUnderlineColor="@color/gray" />
+             android:id="@+id/dropDownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                app:dropMenuBackgroundColor="@color/white"
+                app:dropMenuDistanceOfTabAndImage="3dp"
+                app:dropMenuDividerColor="#00000000"
+                app:dropMenuMaskColor="#cc333333"
+                app:dropMenuMenuHeightPercent="0.5"
+                app:dropMenuMenuParentHeight="40dp"
+                app:dropMenuSelectedIcon="@mipmap/arrow_down"
+                app:dropMenuTabChildGravity="center"
+                app:dropMenuTabGravity="left"
+                app:dropMenuTabIsWrapContent="false"
+                app:dropMenuTextSelectedColor="@color/app_red"
+                app:dropMenuTextSize="13sp"
+                app:dropMenuTextUnselectedColor="@color/text_666666"
+                app:dropMenuUnderLineHeight="1dp"
+                app:dropMenuUnderlineColor="@color/gray_background_line"
+                app:dropMenuUnselectedIcon="@mipmap/arrow_right" />
 
 
     代码固定使用方式，可直接copy,之后将下拉时要显示出来的控件即可修改为你想要的控件即可
@@ -81,6 +85,10 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 public class SimpleDropMenu extends LinearLayout {
+    //顶部tab中一个个子tab的位置
+    private String tabGravity = "left";
+    //顶部tab中一个个子tab中的内容位置
+    private String tabChildGravity = "center";
     //顶部菜单布局
     private LinearLayout tabMenuView;
     //底部容器，包含popupMenuViews，maskView
@@ -113,6 +121,8 @@ public class SimpleDropMenu extends LinearLayout {
     private int menuUnselectedIcon;
     //菜单视图区域高度百分比
     private float menuHeighPercent = 0.5f;
+    //顶部菜单内容父布局是否需要WrapContent模式,true将采用match_parent
+    private boolean dropMenuTabIsWrapContent=false;
 
     private OnDropDownMenuCallBack onDropDownMenuCallBack;
 
@@ -154,15 +164,16 @@ public class SimpleDropMenu extends LinearLayout {
         underLineHeight = a.getDimensionPixelSize(R.styleable.DropDownMenu_dropMenuUnderLineHeight, underLineHeight);//下划线高度
         menuParentHeight = a.getDimensionPixelSize(R.styleable.DropDownMenu_dropMenuMenuParentHeight, menuParentHeight);//顶部菜单布局高度（包括下划线）
         distanceOfTabAndImage = a.getDimensionPixelSize(R.styleable.DropDownMenu_dropMenuDistanceOfTabAndImage, distanceOfTabAndImage);//tab与图片的距离(如果>-1将tab设置成match_parent并设置weight=1且正常设置margin,否则将tab设置成wrap_content)
+        tabGravity = a.getString(R.styleable.DropDownMenu_dropMenuTabGravity)==null?tabGravity: a.getString(R.styleable.DropDownMenu_dropMenuTabGravity);//顶部tab中一个个子tab的位置
+        tabChildGravity=a.getString(R.styleable.DropDownMenu_dropMenuTabChildGravity)==null?tabChildGravity: a.getString(R.styleable.DropDownMenu_dropMenuTabChildGravity);//顶部tab中一个个子tab中的内容位置
         a.recycle();
 
         //初始化tabMenuView并添加到tabMenuView
         tabMenuView = new LinearLayout(context);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, menuParentHeight);
         tabMenuView.setOrientation(HORIZONTAL);
-        tabMenuView.setGravity(Gravity.CENTER);
+        tabMenuView.setGravity(GravityType.getGravity(tabGravity));
         tabMenuView.setBackgroundColor(menuBackgroundColor);
-        tabMenuView.setLayoutParams(params);
+        tabMenuView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, menuParentHeight));
         addView(tabMenuView, 0);
 
         //为tabMenuView添加下划线
@@ -242,8 +253,7 @@ public class SimpleDropMenu extends LinearLayout {
         //tab父容器（包含TextView和ImageView）
         LinearLayout tabParent = new LinearLayout(getContext());
         tabParent.setOrientation(HORIZONTAL);
-        tabParent.setGravity(Gravity.CENTER);
-        tabParent.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
+        tabParent.setGravity(GravityType.getGravity(tabChildGravity));
         tabParent.setTag(i);//绑定索引
         //添加tab
         TextView tab = new TextView(getContext());
@@ -275,6 +285,12 @@ public class SimpleDropMenu extends LinearLayout {
         imageView.setPadding(0, 0, dpTpPx(10), 0);
         tabParent.addView(imageView);
         tabMenuView.addView(tabParent);
+        if (dropMenuTabIsWrapContent){
+            tabParent.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        }else {
+            tabParent.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f));
+        }
+
         //设置位置参数
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(distanceOfTabAndImage, 0, 0, 0);
@@ -352,7 +368,6 @@ public class SimpleDropMenu extends LinearLayout {
         if (linearLayout != null) {
             ((TextView) linearLayout.getChildAt(0)).setTextColor(color);
         }
-
     }
 
     /**
