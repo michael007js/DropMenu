@@ -8,13 +8,14 @@ No picture u say a j8!
 
 
  **项目介绍** 
- 一个使用比较方便的下拉选择菜单，魔改于原版的DropDownMenu下拉条件筛选菜单，对原有的一些使用不方便的方法做了一堆扩展，增加了了箭头与文字之间距离的控制，另新增了一种使用方式
+ 一个使用比较方便的下拉选择菜单，魔改于原版的DropDownMenu下拉条件筛选菜单，对原有的一些使用不方便的方法做了一堆扩展，增加了一些比较实用的扩展
+
 
  **使用说明** 
     
   导入本库依赖
   
-  implementation 'com.michael007js:SimpleDropMenu:1.0.1'
+  implementation 'com.michael007js:SimpleDropMenu:1.0.3'
   
   
   本库有两种使用方式，第一种为正常的XML可见模式，第二种为代码addView模式，两种使用方式的唯一区别就在于dropMenu.setDropDownMenu(tabMenuBeanList, views, null)这个方法，addView模式不需要画XML，只需要new出你想要的控件add进去即可，
@@ -24,30 +25,37 @@ No picture u say a j8!
      
      1.在画出你的布局： 
 
-    <com.sss.simpleDropMenu.SimpleDropMenu
-        android:id="@+id/dropDownMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:dropMenuBackgroundColor="@color/white"
-        app:dropMenuDistanceOfTabAndImage="5dp"
-        app:dropMenuDividerColor="#333333"
-        app:dropMenuMaskColor="#cc333333"
-        app:dropMenuMenuHeightPercent="0.5"
-        app:dropMenuMenuParentHeight="40dp"
-        app:dropMenuSelectedIcon="@mipmap/item_play_xia"
-        app:dropMenuTextSelectedColor="@color/app_red"
-        app:dropMenuTextSize="13sp"
-        app:dropMenuTextUnselectedColor="@color/text_666666"
-        app:dropMenuUnderLineHeight="1dp"
-        app:dropMenuUnderlineColor="@color/gray"
-        app:dropMenuUnselectedIcon="@mipmap/item_play_you" />
-
-    <TextView
+       <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="50sp"
-        android:text="hello world" />
+        android:layout_height="match_parent">
+
+
+        <include layout="@layout/layout_list"
+            android:layout_marginTop="41dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+
+        <com.sss.simpleDropMenu.SimpleDropMenu
+            android:layout_marginTop="1dp"
+            android:id="@+id/dropDownMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dropMenuBackgroundColor="@color/white"
+            app:dropMenuDistanceOfTabAndImage="3dp"
+            app:dropMenuDividerColor="#00000000"
+            app:dropMenuMaskColor="#cc333333" 
+            app:dropMenuMenuHeightPercent="0.5"
+            app:dropMenuMenuParentHeight="40dp"
+            app:dropMenuSelectedIcon="@mipmap/arrow_down"
+            app:dropMenuTextSelectedColor="@color/app_red"
+            app:dropMenuTextSize="13sp"
+            app:dropMenuTextUnselectedColor="@color/text_666666"
+            app:dropMenuUnderLineHeight="1dp"
+            app:dropMenuUnderlineColor="@color/gray_background_line"
+            app:dropMenuUnselectedIcon="@mipmap/arrow_right"
+            app:dropMenuTabIsWrapContent="false"
+            app:dropMenuTabGravity="center"/>
+    </FrameLayout>
 
      
      
@@ -108,9 +116,14 @@ No picture u say a j8!
         dropMenuTextUnselectedColor="@color/text_666666"                  未选中的菜单文字颜色
         dropMenuUnderLineHeight="1dp"                                     tab菜单下的一条下划线高度
         dropMenuUnderlineColor="@color/gray"                              tab菜单下的一条下划线颜色
-        dropMenuUnselectedIcon="@mipmap/item_play_you" />                 未选中的菜单图标
+        dropMenuUnselectedIcon="@mipmap/item_play_you"                    未选中的菜单图标
+        app:dropMenuTabIsWrapContent="false"                              顶部tab中一个个tab是否需要WrapContent模式,如果是，自适应菜单按钮中文字或图标的宽度，如果不是，则顶部的一个个菜单按钮按权重=1排列
+        app:dropMenuTabGravity="center"                                   顶部tab中一个个tab的位置
+        app:dropMenuTabChildGravity="center"                              顶部tab中一个个tab中子tab的位置
+        
+     
 
-
+            
 
 
 
@@ -120,6 +133,10 @@ No picture u say a j8!
 
 
 **历史版本**
+
+V1.0.3：修复dropMenuTabIsWrapContent在代码中未调用的bug
+
+V1.0.2：加入三个XML属性dropMenuTabGravity、dropMenuTabChildGravity、dropMenuTabIsWrapContent
 
 V1.0.1：新增公开方法
 
