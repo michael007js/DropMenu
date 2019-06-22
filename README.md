@@ -15,7 +15,7 @@ No picture u say a j8!
     
   导入本库依赖
   
-  implementation 'com.michael007js:SimpleDropMenu:1.0.4'
+  implementation 'com.michael007js:SimpleDropMenu:1.0.5'
   
   
   本库有两种使用方式，第一种为正常的XML可见模式，第二种为代码addView模式，两种使用方式的唯一区别就在于dropMenu.setDropDownMenu(tabMenuBeanList, views, null)这个方法，addView模式不需要画XML，只需要new出你想要的控件add进去即可，
@@ -133,6 +133,8 @@ No picture u say a j8!
 
 
 **历史版本**
+
+V1.0.5：优化头部tab与动画显示效果
 
 V1.0.4：调整菜单关闭效果
 
