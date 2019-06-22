@@ -287,7 +287,7 @@ public class SimpleDropMenu extends LinearLayout {
         ImageView imageView = new ImageView(getContext());
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         imageView.setImageResource(menuUnselectedIcon);
-        imageView.setPadding(0, 0, dpTpPx(10), 0);
+        imageView.setPadding(0, 0, dpTpPx(0), 0);
         tabParent.addView(imageView);
         tabMenuView.addView(tabParent);
         if (dropMenuTabIsWrapContent) {
@@ -298,7 +298,7 @@ public class SimpleDropMenu extends LinearLayout {
 
         //设置位置参数
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(distanceOfTabAndImage, 0, 0, 0);
+        layoutParams.setMargins(distanceOfTabAndImage, 3, 0, 0);
         imageView.setLayoutParams(layoutParams);
         if (tabMenuBean.canDropDown) {
             if (distanceOfTabAndImage > -1) {
@@ -431,19 +431,16 @@ public class SimpleDropMenu extends LinearLayout {
         maskAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                Log.e("SSSSS", "onAnimationStart");
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
                 maskView.setVisibility(View.GONE);
-                Log.e("SSSSS", "onAnimationEnd");
                 closePopmenuView();
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-                Log.e("SSSSS", "onAnimationRepeat");
             }
         });
         maskView.startAnimation(maskAnimation);

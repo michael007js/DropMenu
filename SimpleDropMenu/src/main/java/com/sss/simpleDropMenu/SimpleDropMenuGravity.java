@@ -7,8 +7,9 @@ package com.sss.simpleDropMenu;
 public enum SimpleDropMenuGravity {
     center("center"),
     left("left"),
-    right("right");
-
+    right("right"),
+    center_vertical("center_vertical"),
+    center_horizontal("center_horizontal");
 
     private String gravity;
 
