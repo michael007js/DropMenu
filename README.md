@@ -150,6 +150,8 @@ V1.0.0：初始版本上线
 
  By SSS
 
+ [一个Android平台包含各种效果的音乐频谱合集](https://github.com/michael007js/SpectrumForAndroid)
+
  [原版地址](https://github.com/dongjunkun/DropDownMenu)
 
 
