@@ -1,4 +1,6 @@
- ** **DropMenu** ** 
+**DropMenu**
+
+[一个简单且强大的exo3+播放器库](https://github.com/michael007js/SimpleSuperExoPlayer/tree/master)
  
   [一个Android平台包含各种效果的音乐频谱合集](https://github.com/michael007js/SpectrumForAndroid)
 
